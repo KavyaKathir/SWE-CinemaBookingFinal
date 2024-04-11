@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Showtime Selection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.2/flickity.min.css">
+    <link rel="stylesheet" href="./styles.css">
+    <style>
+        .selected {
+            /* Example styles for selected button */
+            background-color: #007bff; /* Change color as needed */
+            color: white;
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <div class="navbar">
+        <div class="navbar-container">
+            <div class="logo-container">
+                <div>
+                    <h1 class="logo">MOVIELANE</h1>
+                </div>
+                <div>
+                    <button id="home" class="big-button">HOME</button>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button id="loginBtn">LOGIN</button>
+                <button id="registerBtn">REGISTER</button>
+            </div>
+        </div>
+    </div>
+    <div class="screens">
+        <h2>Select your show time!</h2>
+    </div>
+
+
+    <div class="button-wrapper">
+        <!-- Added data attributes to buttons for date values -->
+        <button class="date-button" data-date="22 Monday">22 Today</button>
+        <button class="date-button" data-date="23 Tuesday">23 Tomorrow</button>
+        <button class="date-button" data-date="24 Wednesday">24 Wednesday</button>
+        <button class="date-button" data-date="25 Thursday">25 Thursday</button>
+        <button class="date-button" data-date="26 Friday">26 Friday</button>
+        <button class="date-button" data-date="27 Saturday">27 Saturday</button>
+        <button class="date-button" data-date="28 Sunday">28 Sunday</button>
+    </div>
+    <div class="screens">
+        Screen 1
+    </div>
+    <div class="time-btn">
+        <!-- Updated onclick attribute to point to the correct function -->
+        <button class="screen-time" data-time="11:00 AM">11:00 AM</button>
+        <button class="screen-time" data-time="7:00 PM">7:00 PM</button>
+    </div>
+
+    <button class="new-button" onclick="saveSelection()">Next</button>
+
+    <script>
+        // Variable to hold the default month
+        let defaultMonth = 'April';
+        
+        // Variables to hold selected date and time
+        let selectedDate = null;
+        let selectedTime = null;
+    
+        // Select all date buttons and add click event listeners
+        document.querySelectorAll('.date-button').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove 'selected' class from all date buttons
+                document.querySelectorAll('.date-button').forEach(btn => btn.classList.remove('selected'));
+                // Add 'selected' class to the clicked button
+                this.classList.add('selected');
+                // Set the selected date with the default month prefixed
+                selectedDate = defaultMonth + ' ' + this.getAttribute('data-date');
+            });
+        });
+    
+        // Select all time buttons and add click event listeners
+        document.querySelectorAll('.screen-time').forEach(button => {
+                button.addEventListener('click', function() {
+                // Remove 'selected' class from all time buttons
+                document.querySelectorAll('.screen-time').forEach(btn => btn.classList.remove('selected'));
+                // Add 'selected' class to the clicked button
+                this.classList.add('selected');
+                // Set the selected time
+                selectedTime = this.getAttribute('data-time');
+            });
+        });
+    
+        // Function to save the selection to localStorage and show alert
+        function saveSelection() {
+            if (selectedDate && selectedTime) {
+                // Store the selections in an array in localStorage
+                localStorage.setItem('showtimeSelection', JSON.stringify([selectedDate, selectedTime]));
+                // Show an alert with the default month, selected date, and time
+                alert(`Your selection of date: ${selectedDate} and time: ${selectedTime} has been successfully saved.`);
+            } else {
+                alert('Please select a date and a time before pressing Next.');
+            }
+        }
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.2/flickity.pkgd.min.js"></script>
+</body>
+</html>
