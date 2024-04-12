@@ -142,4 +142,4 @@ function displayMovieDetails(title, container) {
     } else {
         container.textContent = 'Movie details not available.';
     }
-}
+} // displayMovieDetails
