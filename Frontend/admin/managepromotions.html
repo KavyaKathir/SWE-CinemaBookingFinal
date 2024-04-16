@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>Manage Promotions</title>
+    <style>
+        body {
+            background-size: cover;
+            background-attachment: fixed;
+            animation: animateBackground 20s linear infinite;
+            color: white;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #343a40;
+            padding-top: 70px;
+            transition: all 0.3s;
+        }
+
+        .sidebar a {
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #fff;
+            display: block;
+            transition: all 0.3s;
+        }
+
+        .sidebar a:hover {
+            padding-top: 8px; /* Reduce top padding on hover */
+            padding-bottom: 8px; /* Reduce bottom padding on hover */
+            background-color: #555;
+        }
+
+        .sidebar .active {
+            background-color: #555;
+        }
+
+        .sidebar .nav-item {
+            margin-bottom: 10px;
+            margin-left:25px;
+        }
+
+        .sidebar .navbar-brand {
+            font-size: 24px;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            width: 100%;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .navbar-nav.ml-auto {
+            position: absolute;
+            bottom: 0;
+        }
+
+        .container {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: green;
+            margin-bottom:25px;
+        }
+
+        select, input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            color: #000; /* Change field value color here */
+        }
+
+        .formLabel {
+            color: red;
+        }
+
+        .btn-container {
+            text-align: center;
+        }
+
+        .btn {
+            margin: 10px;
+        }
+
+        /* Hide sections initially */
+        .hide {
+            display: none;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<nav class="sidebar">
+    <ul>
+        <a class="navbar-brand" href="#">
+            <img src="/Frontend/img/lo.png" style="width:150px; height:50px;">
+            <div class="logo-container"><h1 class="logo">MOVIELANE</h1></div>
+        </a>
+    </ul>
+    <br/>
+    <br/>
+    <br/>
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="./manageusers.html" class="active">Manage Users</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="./schedulemovies.html">Manage Movies</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="./managepromotions.html">Manage Promotions</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="./manageprices.html">Manage Prices</a>
+        </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i class="fa fa-user-circle-o"></i> Profile
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i class="fa fa-sign-out"></i> Logout
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<div class="container text-center"> <!-- Added class "text-center" for center alignment -->
+    <div class="bottom-content">
+        <h1>Manage Promotions</h1>
+
+        <!-- Add Promotion Button -->
+        <button class="btn btn-primary add-promotion-btn">Add Promotion</button>
+
+        <!-- Edit Promotion Button -->
+        <button class="btn btn-secondary edit-promotion-btn">Edit Promotion</button>
+
+        <!-- Delete Promotion Button -->
+        <button class="btn btn-danger delete-promotion-btn">Delete Promotion</button>
+
+        <!-- Send Promo Email Button -->
+        <button class="btn btn-success send-promo-email-btn">Send Promotion Email</button>
+
+        <!-- Add Promotion Form -->
+        <section class="add-promotion-form hide">
+            <form class="movieForm" method="post">
+                <table>
+                    <tr>
+                        <td><label class="formLabel" for="code">Promotion Name</label></td>
+                        <td><input type="text" id="code" placeholder="Enter Promo Name" name="code" value=""></td>
+                    </tr>
+                    <tr>
+                        <td><label class="formLabel" for="discount">Discount:</label></td>
+                        <td><input type="number" id="discount" placeholder="Enter Discount(%)" name="discount"></td>
+                    </tr>
+                    <tr>
+                        <td><label class="formLabel" for="start">Start date</label></td>
+                        <td><input type="text" id="start" placeholder="mm/dd/yyyy" name="start" value=""></td>
+                    </tr>
+                    <tr>
+                        <td><label class="formLabel" for="end">End date</label></td>
+                        <td><input type="text" id="end" name="end" placeholder="mm/dd/yyyy" value=""></td>
+                    </tr>
+                </table>
+                <div class="btn-container">
+                    <input type="submit" class="btn btn-success" value="Save">
+                    <input type="button" class="btn btn-danger cancel-btn" value="Cancel">
+                </div>
+            </form>
+        </section>
+        <?php
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Check if all form fields are set and not empty
+    if (isset($_POST['code']) && isset($_POST['discount']) && isset($_POST['start']) && isset($_POST['end']) &&
+        !empty($_POST['code']) && !empty($_POST['discount']) && !empty($_POST['start']) && !empty($_POST['end'])) {
+
+        // Database configuration
+        $servername = "localhost";
+        $username = "your_username";
+        $password = "your_password";
+        $dbname = "your_database_name";
+
+        try {
+            // Create connection
+            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+            // Set the PDO error mode to exception
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        // Prepare SQL statement to insert promotion
+        $stmt = $conn->prepare("INSERT INTO promotions (name, discount, start_date, end_date)
+        VALUES (:name, :discount, :start_date, :end_date)");
+
+        // Bind parameters
+        $stmt->bindParam(':name', $_POST['code']);
+        $stmt->bindParam(':discount', $_POST['discount']);
+        $stmt->bindParam(':start_date', $_POST['start']);
+        $stmt->bindParam(':end_date', $_POST['end']);
+
+        // Execute SQL statement
+        $stmt->execute();
+
+        // Echo success message
+        echo "<script>alert('New promotion added successfully');</script>";
+
+        } catch(PDOException $e) {
+        // Display error message
+        echo "Error: " . $e->getMessage();
+        }
+
+        // Close connection
+        $conn = null;
+        } else {
+        // Echo error message if any field is empty
+        echo "<script>alert('All fields are required');</script>";
+        }
+        }
+        ?>
+
+
+        <!-- Edit Promotion Form -->
+        <section class="edit-promotion-form hide">
+            <select>
+                <option>Select Promotion</option>
+                <!-- Include options dynamically here -->
+            </select>
+            <form class="movieForm" method="post">
+                <table>
+                    <tr>
+                        <td><label class="formLabel" for="code">Promotion Name</label></td>
+                        <td><input type="text" id="code" placeholder="Enter Promo Name" name="code" value=""></td>
+                    </tr>
+                    <tr>
+                        <td><label class="formLabel" for="start">Start date</label></td>
+                        <td><input type="text" id="start" placeholder="mm/dd/yyyy" name="start" value=""></td>
+                    </tr>
+                    <tr>
+                        <td><label class="formLabel" for="end">End date</label></td>
+                        <td><input type="text" id="end" name="end" placeholder="mm/dd/yyyy" value=""></td>
+                    </tr>
+                    <tr>
+                        <td><label class="formLabel" for="discount">Discount:</label></td>
+                        <td><input type="number" id="discount" placeholder="Enter Discount(%)" name="discount"></td>
+                    </tr>
+                </table>
+                <div class="btn-container">
+                    <input type="submit" class="btn btn-success" value="Save">
+                    <input type="button" class="btn btn-danger cancel-btn" value="Cancel">
+                </div>
+            </form>
+        </section>
+
+        <!-- Delete Promotion Form -->
+        <section class="delete-promotion-form hide">
+            <select>
+                <option>Select Promotion</option>
+                <!-- Include options dynamically here -->
+            </select>
+            <form class="movieForm" method="post">
+                <!-- Delete confirmation message -->
+                <div class="btn-container">
+                    <input type="submit" class="btn btn-danger" value="Delete">
+                    <input type="button" class="btn btn-secondary cancel-btn" value="Cancel">
+                </div>
+            </form>
+        </section>
+
+        <!-- Send Promo Email Form -->
+        <section class="send-promo-email-form hide">
+            <select>
+                <option>Select User</option>
+                <!-- Include user options dynamically here -->
+            </select>
+            <select>
+                <option>Select Promotion</option>
+                <!-- Include promo options dynamically here -->
+            </select>
+            <form class="movieForm" method="post">
+                <!-- Additional fields for sending promo email -->
+                <div class="btn-container">
+                    <input type="submit" class="btn btn-success" value="Send">
+                    <input type="button" class="btn btn-danger cancel-btn" value="Cancel">
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+
+<script>
+    // Functionality to show respective sections on button clicks
+    document.addEventListener('DOMContentLoaded', function() {
+        const addPromotionBtn = document.querySelector('.add-promotion-btn');
+        const editPromotionBtn = document.querySelector('.edit-promotion-btn');
+        const deletePromotionBtn = document.querySelector('.delete-promotion-btn');
+        const sendPromoEmailBtn = document.querySelector('.send-promo-email-btn');
+
+        const addPromotionForm = document.querySelector('.add-promotion-form');
+        const editPromotionForm = document.querySelector('.edit-promotion-form');
+        const deletePromotionForm = document.querySelector('.delete-promotion-form');
+        const sendPromoEmailForm = document.querySelector('.send-promo-email-form');
+
+        addPromotionBtn.addEventListener('click', function() {
+            showSection(addPromotionForm);
+        });
+
+        editPromotionBtn.addEventListener('click', function() {
+            showSection(editPromotionForm);
+        });
+
+        deletePromotionBtn.addEventListener('click', function() {
+            showSection(deletePromotionForm);
+        });
+
+        sendPromoEmailBtn.addEventListener('click', function() {
+            showSection(sendPromoEmailForm);
+        });
+
+        // Function to hide all sections
+        function hideAllSections() {
+            addPromotionForm.classList.add('hide');
+            editPromotionForm.classList.add('hide');
+            deletePromotionForm.classList.add('hide');
+            sendPromoEmailForm.classList.add('hide');
+        }
+
+        // Function to show a specific section
+        function showSection(section) {
+            hideAllSections();
+            section.classList.remove('hide');
+        }
+    });
+</script>
+
+</body>
+</html>

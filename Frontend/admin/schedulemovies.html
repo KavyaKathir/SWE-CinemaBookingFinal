@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>Manage Movies</title>
+    <style>
+        /* Custom styling */
+        body {
+            background-color: #f8f9fa;
+        }
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #343a40;
+            padding-top: 70px;
+            transition: all 0.3s;
+        }
+        .sidebar a {
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #fff;
+            display: block;
+            transition: all 0.3s;
+        }
+        .sidebar a:hover {
+            background-color: #555;
+        }
+        .sidebar .active {
+            background-color: #555;
+        }
+        .sidebar .nav-item {
+            margin-bottom: 10px;
+            margin-left:25px;
+        }
+        .sidebar .navbar-brand {
+            font-size: 24px;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            width: 100%;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+        .navbar-nav.ml-auto {
+            position: absolute;
+            bottom: 0;
+        }
+
+        .btn-manage-movies {
+            background-color: #007bff !important; /* Blue color */
+            color: #fff;
+        }
+        .btn-schedule-movies {
+            background-color: #ff7f00 !important; /* Orange color */
+            color: #fff;
+        }
+        .btn-manage-movies:focus,
+        .btn-manage-movies:hover {
+            background-color:red !important; /* Blue color */
+            color: #fff;
+        }
+        .btn-schedule-movies:focus,
+        .btn-schedule-movies:hover {
+            background-color: green !important; /* Orange color */
+            color: #fff;
+        }
+        .btn-secondary,
+        .btn-secondary :focus
+        {
+            background-color: brown ;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="sidebar">
+    <ul>
+        <a class="navbar-brand" href="#">
+            <img src="/Frontend/img/lo.png" style="width:150px; height:50px;">
+            <div class="logo-container"><h1 class="logo">MOVIELANE</h1></div>
+        </a>
+    </ul>
+    <br/>
+    <br/>
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="./manageusers.php" class="active">Manage Users</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="./schedulemovies.html">Manage Movies</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="./managepromotions.php">Manage Promotions</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="./manageprices.php">Manage Prices</a>
+        </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i class="fa fa-user-circle-o"></i> Profile
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i class="fa fa-sign-out"></i> Logout
+            </a>
+        </li>
+    </ul>
+</nav>
+
+
+<div class="content">
+    <div class="middle-content text-center">
+        <input type="button" class="btn btn-manage-movies" value="Manage Movies" onclick="toggleManageMoviesSection()">
+        <input type="button" class="btn btn-schedule-movies" value="Schedule Movies" onclick="toggleScheduleMoviesSection()">
+    </div>
+
+    <div id="manageMoviesSection">
+
+        <div class="container">
+            <div class="bottom-content">
+
+                <br>
+                <input type="button" class="btn btn-secondary" value="Add Movie" onclick="showAddMovieFields()">
+                <input type="button" class="btn btn-secondary" value="Edit Movie" onclick="showEditMovieFields()">
+                <input type="button" class="btn btn-secondary" value="Delete Movie" onclick="showDeleteMovieDropdown()">
+                <div style="height: 20px;"></div> <!-- Empty div for spacing -->
+                <br>
+                <div>
+                <!-- Add action attribute to the form to specify the PHP script handling form submission -->
+                <form id="addMovieForm" style="display:block;" action="./add_movie.php" method="post">
+                    <!-- Input fields for movie data -->
+                    <input type="text" class="form-control" name="movieTitle" placeholder="Movie Title" required>
+                    <input type="text" class="form-control" name="category" placeholder="Category" required>
+                    <input type="text" class="form-control" name="cast" placeholder="Cast" required>
+                    <input type="text" class="form-control" name="director" placeholder="Director" required>
+                    <input type="text" class="form-control" name="producer" placeholder="Producer" required>
+                    <input type="text" class="form-control" name="synopsis" placeholder="Synopsis" required>
+                    <input type="text" class="form-control" name="reviews" placeholder="Reviews" required>
+                    <input type="text" class="form-control" name="trailerPicUrl" placeholder="Trailer Picture URL" required>
+                    <input type="text" class="form-control" name="trailerVideoUrl" placeholder="Trailer Video URL" required>
+                    <input type="text" class="form-control" name="mpaaRating" placeholder="MPAA-US Rating Code" required>
+                    <input type="text" class="form-control" name="comingSoon" placeholder="1 (Coming Soon Movie) - 0 (Now Playing Movie)" required>
+                    <input type="text" class="form-control" name="duration" placeholder="145 Min" required>
+
+                    <br>
+                    <!-- Submit button -->
+                    <input type="submit"  name="submit" class="btn btn-success" value="Submit">
+                    <input type="button" class="btn btn-danger" value="Cancel">
+                </form>
+
+</div><div>
+                <form id="editMovieForm" style="display:none;" method="post">
+                    <select name="moviesDropdown" id="moviesDropdown">
+                        <option>Select the Movie</option>
+                        <!-- Options will be dynamically populated here -->
+                    </select>
+                    <input type="hidden" id="movieTitle" name="movieTitle" value="">
+                    <input type="text" class="form-control" id="movie_category" name="category" placeholder="Category" value="">
+                    <input type="text" class="form-control" id="movie_cast" name="cast" placeholder="Cast" value="">
+                    <input type="text" class="form-control" id="movie_director" name="director" placeholder="Director" value="">
+                    <input type="text" class="form-control" id="movie_producer" name="producer" placeholder="Producer" value="">
+                    <input type="text" class="form-control" id="movie_synopsis" name="synopsis" placeholder="Synopsis" value="">
+                    <input type="text" class="form-control" id="movie_reviews" name="reviews" placeholder="Reviews" value="">
+                    <input type="text" class="form-control" id="movie_trailer_pic_url" name="trailerPicUrl" placeholder="Trailer Picture URL" value="">
+                    <input type="text" class="form-control" id="movie_trailer_video_url" name="trailerVideoUrl" placeholder="Trailer Video URL" value="">
+                    <input type="text" class="form-control" id="movie_mpaa_rating" name="mpaaRating" placeholder="MPAA-US Rating Code" value="">
+                    <input type="text" class="form-control" id="movie_coming_soon" name="comingSoon" placeholder="1 (Coming Soon Movie) - 0 (Now Playing Movie)" >
+                    <input type="text" class="form-control" id="movie_duration" name="duration" placeholder="145 Min" >
+                    <br>
+                    <input type="submit" name="submit" class="btn btn-success" value="Submit">
+                    <input type="button" class="btn btn-danger" value="Cancel">
+                </form>
+
+                <script>
+
+                    document.getElementById('moviesDropdown').addEventListener('change', function() {
+    var movieTitle = this.value;
+
+    // Make an AJAX request to fetch movie details
+    fetch('fetch_movie_details.php?moviesDropdown=' + movieTitle)
+        .then(response => response.json())
+        .then(data => {
+            // Update form fields with fetched movie details
+            document.getElementById('movie_category').value = data.category;
+            document.getElementById('movie_cast').value = data.movieCast;
+            document.getElementById('movie_director').value = data.director;
+            document.getElementById('movie_producer').value = data.producer;
+            document.getElementById('movie_synopsis').value = data.synopsis;
+            document.getElementById('movie_reviews').value = data.reviews;
+            document.getElementById('movie_trailer_pic_url').value = data.picture;
+            document.getElementById('movie_trailer_video_url').value = data.trailer;
+            document.getElementById('movie_mpaa_rating').value = data.ratingCode;
+            document.getElementById('movie_coming_soon').value = data.comingSoon;
+            document.getElementById('movie_duration').value = data.duration;
+            document.getElementById('movieTitle').value = data.title;
+        })
+        .catch(error => console.error('Error fetching movie details:', error));
+});
+
+                </script>
+
+            </div><div>      <form id="deleteMovieForm" style="display:none;" method="post">
+                    <select id="deleteMovieDropdown">
+                        <option>Select the Movie</option>
+                        <!-- Movie titles will be populated here dynamically from the database -->
+                    </select>
+                    <input type="submit" name ="submit" class="btn btn-success" value="Delete Movie">
+            </form>
+            </div>
+<script>
+                window.onload = function() {
+                fetchMovieTitlesForEdit(); // Fetch movie titles for editing when the page loads
+                fetchMovieTitlesForDelete(); // Fetch movie titles for deleting when the page loads
+                };
+
+                function fetchMovieTitlesForEdit() {
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "get_movie_titles.php", true);
+                xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                var movies = JSON.parse(xhr.responseText);
+                populateEditDropdown(movies);
+                }
+                };
+                xhr.send();
+                }
+
+                function fetchMovieTitlesForDelete() {
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "delete_and_select_movies.php", true);
+                xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                var movies = JSON.parse(xhr.responseText);
+                populateDeleteDropdown(movies);
+                }
+                };
+                xhr.send();
+                }
+
+                function populateEditDropdown(movies) {
+                var dropdown = document.getElementById("moviesDropdown");
+                dropdown.innerHTML = ""; // Clear existing options
+                for (var i = 0; i < movies.length; i++) {
+                var option = document.createElement("option");
+                option.text = movies[i];
+                dropdown.add(option);
+                }
+                }
+
+                function populateDeleteDropdown(movies) {
+                var dropdown = document.getElementById("deleteMovieDropdown");
+                dropdown.innerHTML = ""; // Clear existing options
+                for (var i = 0; i < movies.length; i++) {
+                var option = document.createElement("option");
+                option.text = movies[i];
+                dropdown.add(option);
+                }
+                }
+// Add event listener for the edit movie form submission
+document.getElementById("editMovieForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    // Gather form data
+    var formData = new FormData(this);
+
+    // Make an AJAX request to update movie details
+    fetch('fetch_movie_details.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(result => {
+        alert(result); // Display the result from the server
+        // Optionally, you can reset the form after successful submission
+        // this.reset();
+    })
+    .catch(error => console.error('Error updating movie details:', error));
+});
+
+                document.getElementById("deleteMovieForm").addEventListener("submit", function(event) {
+                event.preventDefault(); // Prevent default form submission
+                deleteMovie(); // Call deleteMovie function
+                });
+                function deleteMovie() {
+                        var selectedMovie = document.getElementById("deleteMovieDropdown").value;
+                        if (selectedMovie !== "Select the Movie") {
+                            var xhr = new XMLHttpRequest();
+                            xhr.open("POST", "delete_and_select_movies.php", true);
+                            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                            xhr.onreadystatechange = function() {
+                                if (xhr.readyState === 4 && xhr.status === 200) {
+                                    alert(xhr.responseText); // Show response from server
+                                    fetchMovieTitles(); // Fetch updated movie titles after deletion
+                                }
+                            };
+                            xhr.send("movieTitle=" + selectedMovie);
+                        } else {
+                            alert("Please select a movie to delete.");
+                        }
+                    }
+                </script>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<script>
+    function toggleManageMoviesSection() {
+        document.getElementById('manageMoviesSection').classList.remove('hidden');
+        document.getElementById('scheduleMoviesSection').classList.add('hidden');
+        document.querySelector('.btn.btn-primary-selected').classList.remove('btn-primary-selected');
+        document.querySelector('.btn.btn-primary').classList.add('btn-primary-selected');
+    }
+
+    function toggleScheduleMoviesSection() {
+
+        // Redirect to the page for managing schedules
+        window.location.href = './manageschedules.php'; // Replace './manage_schedules.php' with the actual URL of your schedule management page
+
+    }
+
+    function showAddMovieFields() {
+        document.getElementById('addMovieForm').style.display = 'block';
+        document.getElementById('editMovieForm').style.display = 'none';
+        document.getElementById('deleteMovieForm').style.display = 'none';
+    }
+
+    function showEditMovieFields() {
+        document.getElementById('addMovieForm').style.display = 'none';
+        document.getElementById('editMovieForm').style.display = 'block';
+        document.getElementById('deleteMovieForm').style.display = 'none';
+    }
+
+    function showDeleteMovieDropdown() {
+        document.getElementById('addMovieForm').style.display = 'none';
+        document.getElementById('editMovieForm').style.display = 'none';
+        document.getElementById('deleteMovieForm').style.display = 'block';
+    }
+</script>
+
+</body>
+</html>

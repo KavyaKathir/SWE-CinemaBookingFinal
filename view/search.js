@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function () {
         searchResultsContainer.innerHTML = ''; // Clear previous results
         const differenceInDays = Math.floor((date.getTime() - Date.now()) / (1000 * 60 * 60 * 24));
 
-        if (differenceInDays < 3) {
+        if (differenceInDays < 4) {
             // Show the first three movies for the first 5 days
             movies.slice(0, 3).forEach(movie => {
                 const movieElement = createMovieElement(movie);

@@ -1,0 +1,356 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Create Account</title>
+    <link rel="stylesheet" href="style.css">
+     <style>
+       
+        .nav img {
+            height: 45px;
+            width: 350px; 
+            margin-right: 10px; 
+            border: none !important;
+        }
+
+        .login {
+        margin-left: -5px; 
+    }
+        .form-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .form-group label {
+            margin-right: 5px;
+        }
+        .form-group {
+        margin-bottom: 20px; 
+    }
+        #createPwd {
+            width: 200px; 
+        }
+        .weak {
+            color: red; 
+        }
+
+        .medium {
+            color: orange; 
+        }
+
+        .strong {
+            color: green;
+        }
+        .radio-container {
+    display: inline-block;
+    margin-right: 20px; 
+}
+#submit {
+        background-color: #ff1493;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 1080px; 
+    }
+
+    #submit:hover {
+        background-color: orange;
+    }
+#Error {
+    display: none;
+    position: absolute;
+    width: 100%;
+    left: 25%;
+    top: 80%;
+    color: #999;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    overflow: auto;
+}
+
+
+.copyright {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    cursor: default;
+}
+
+.copyright p {
+    opacity: 55%;
+    transition: 1.5s;
+}
+
+.copyright p:hover {
+    opacity: 100%;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #000;
+    font-size: 24px;
+    cursor: pointer;
+}
+ .copyright {
+        background-color: black;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+    }
+    </style>
+    <script>
+        function checkPasswordStrength() {
+    const passwordInput = document.getElementById('createPwd');
+    const passwordStrength = document.getElementById('passwordStrength');
+
+    const strongRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const mediumRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+    if (passwordInput.value.match(strongRegex)) {
+        passwordStrength.textContent = 'Strong';
+        passwordStrength.className = 'strong';
+    } else if (passwordInput.value.match(mediumRegex) || passwordInput.value.length >= 8) {
+        passwordStrength.textContent = 'Medium';
+        passwordStrength.className = '';
+    } else {
+        const remainingChars = 8 - passwordInput.value.length;
+        let missingChars = '';
+        
+        if (!/[a-z]/.test(passwordInput.value)) {
+            missingChars += 'lowercase letter, ';
+        }
+        if (!/[A-Z]/.test(passwordInput.value)) {
+            missingChars += 'uppercase letter, ';
+        }
+        if (!/\d/.test(passwordInput.value)) {
+            missingChars += 'digit, ';
+        }
+        if (!/[@$!%*?&]/.test(passwordInput.value)) {
+            missingChars += 'special character, ';
+        }
+        
+        missingChars = missingChars.slice(0, -2);
+        
+        passwordStrength.textContent = `Weak - ${remainingChars} characters left to make it strong. Missing: ${missingChars}`;
+        passwordStrength.className = 'weak';
+    }
+}
+
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('createPwd');
+            const checkbox = document.getElementById('pwdView1');
+
+            passwordInput.type = checkbox.checked ? 'text' : 'password';
+        }
+    </script>
+    <script>
+        function toggleShippingAndPayment() {
+            var userType = document.querySelector('input[name="userType"]:checked').value;
+            var shippingAndPaymentSections = document.querySelectorAll('.shipping-and-payment');
+            if (userType === '1') { 
+                shippingAndPaymentSections.forEach(function (section) {
+                    section.style.display = 'none';
+                });
+            } else {
+                shippingAndPaymentSections.forEach(function (section) {
+                    section.style.display = 'block'; 
+                });
+            }
+        }
+        </script>
+</head>
+
+<body>
+    <nav>
+        
+        <ul class="nav">
+            <li><a href="/Frontend/homepage.php"><img src="/Frontend/img/ml.png" style="width: 500px;height:75px;" alt="Movie Lane Logo"></a></li>
+            <li id="Home" ><a href="/Frontend/homepage.php"> Home</a></li>
+            <li id="login" name ="login"><a href="loginn.php">Login</a></li>
+        </ul>
+        
+    </nav>
+
+    <form id="creAcc" action="creaAccount.php" method="post">
+        <h1> Create Account </h1>
+        <label for="firstName"> First Name: * </label> 
+        <input type="text" id="firstName" name="firstName" placeholder="Jane" required> <br/> <br/>
+  
+        <label for="lastName"> Last Name: * </label> 
+        <input type="text" id="lastName" name="lastName" placeholder="Doe" required> <br/> <br/>
+
+        <label for="creEmail">Email: * </label>
+        <input type="email" id="creEmail" name="creEmail" placeholder="" required>
+        <input type="checkbox" id="promotions" name="promoSelected"> Subscribe for Promotions <br /> <br />
+        <label for="createPwd">Password: *</label>
+<div class="form-group">
+    
+    <input type="password" id="createPwd" name="createPwd" required onkeyup="checkPasswordStrength()">
+    <span style="margin-left: 10px;">Password Strength:</span>
+    <span id="passwordStrength" style="margin-left: 5px;"></span>
+    <span id="strengthText"></span>
+</div>
+<div class="form-group">   
+    <input type="checkbox" id="pwdView1" onchange="togglePasswordVisibility()">
+    <label class="checkbox-label" for="pwdView1">Show Password </label> 
+    
+</div>
+
+
+        <label for="phone">Phone Number: *</label>
+        <input type="tel" id="phone" name="phone" placeholder="123-456-7891" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required><br><br>
+
+        <!-- Shipping address and payment sections -->
+        <div class="shipping-and-payment">
+        
+        <label>Shipping Address: </label> <br /> <br />
+
+        <label class="shipping" for="shipAddress">Address</label>
+        <input type="text" id="shipAddress" name="shipAddress" placeholder="1234 pinetree lane" />
+
+        <label class="shipping" for="shipCity">City</label>
+        <input type="text" id="shipCity" name="shipCity"placeholder="Athens" />
+
+        <label class="shipping" for="shipState">State</label>
+        <input type="text" id="shipState" name="shipState" placeholder="Georgia" />
+
+        <label class="shipping" for="shipCountry">Country</label>
+        <input type="text" id="shipCountry" name="shipCountry"placeholder="United States" />
+
+        <label class="shipping" for="shipZip">Zip Code</label>
+        <input type="tel" id="shipZip" name="shipZip" placeholder="40078" />
+
+        <br /> <br />
+        <h3>Card 1</h3>
+        <label for="creDeb1">Card Type:</label>
+        <br>
+        <select name="creDeb1" id="creDeb1">
+            <option value="Credit">Credit</option>
+            <option value="Debit">Debit</option>
+        </select>
+        <br>
+        <br>
+        <label for="cardNum1">Card Number:</label>
+        <input type="text" id="cardNum1" name="cardNum1"><br>
+        <label for="exp1">Expiration Date:</label>
+        <input type="text" id="exp1" name="exp1"><br>
+        <label for="billAdd1">Billing Address:</label>
+        <input type="text" id="billAdd1" name="billAdd1"><br>
+        <label for="billAddCity1">City:</label>
+        <input type="text" id="billAddCity1" name="billAddCity1"><br>
+        <label for="billAddState1">State:</label>
+        <input type="text" id="billAddState1" name="billAddState1"><br>
+        <label for="billAddCtry1">Country:</label>
+        <input type="text" id="billAddCtry1" name="billAddCtry1"><br>
+        <label for="billAddZip1">Zip Code:</label>
+        <input type="text" id="billAddZip1" name="billAddZip1"><br>
+
+        <!-- Card 2 -->
+        <h3>Card 2</h3>
+        <label for="creDeb2">Card Type:</label>
+        <br>
+        <select name="creDeb2" id="creDeb2">
+            <option value="Credit">Credit</option>
+            <option value="Debit">Debit</option>
+        </select>
+        <br>
+        <br>
+        <label for="cardNum2">Card Number:</label>
+        <input type="text" id="cardNum2" name="cardNum2"><br>
+        <label for="exp2">Expiration Date:</label>
+        <input type="text" id="exp2" name="exp2"><br>
+        <label for="billAdd2">Billing Address:</label>
+        <input type="text" id="billAdd2" name="billAdd2"><br>
+        <label for="billAddCity2">City:</label>
+        <input type="text" id="billAddCity2" name="billAddCity2"><br>
+        <label for="billAddState2">State:</label>
+        <input type="text" id="billAddState2" name="billAddState2"><br>
+        <label for="billAddCtry2">Country:</label>
+        <input type="text" id="billAddCtry2" name="billAddCtry2"><br>
+        <label for="billAddZip2">Zip Code:</label>
+        <input type="text" id="billAddZip2" name="billAddZip2"><br>
+
+        <!-- Card 3 -->
+        <h3>Card 3</h3>
+        <label for="creDeb3">Card Type:</label>
+        <br>
+        <select name="creDeb3" id="creDeb3">
+            <option value="Credit">Credit</option>
+            <option value="Debit">Debit</option>
+        </select>
+        <br>
+        <br>
+        <label for="cardNum3">Card Number:</label>
+        <input type="text" id="cardNum3" name="cardNum3"><br>
+        <label for="exp3">Expiration Date:</label>
+        <input type="text" id="exp3" name="exp3"><br>
+        <label for="billAdd3">Billing Address:</label>
+        <input type="text" id="billAdd3" name="billAdd3"><br>
+        <label for="billAddCity3">City:</label>
+        <input type="text" id="billAddCity3" name="billAddCity3"><br>
+        <label for="billAddState3">State:</label>
+        <input type="text" id="billAddState3" name="billAddState3"><br>
+        <label for="billAddCtry3">Country:</label>
+        <input type="text" id="billAddCtry3" name="billAddCtry3"><br>
+        <label for="billAddZip3">Zip Code:</label>
+        <input type="text" id="billAddZip3" name="billAddZip3"><br>
+</div>
+
+        <input type="submit" id="submit" name ="submit" value="Create Account">
+
+    </form>
+<br>
+    <div class="signin">
+     <h2>   <p>Already have an account? <a href="loginn.php">Login</a></p> </h2>
+    </div>
+
+    
+</body>
+<br>
+<br>
+<footer class="copyright">
+    <p>&copy; SEPROJECT <span id="ano"></span></p>
+</footer>
+</html>

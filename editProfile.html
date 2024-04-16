@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Profile</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <ul class="nav">
+    <li><a href="default.asp">Home</a></li>
+    <li><a href="news.asp">Browse Movies</a></li>
+    <li id="profile"><a href="about.asp">Profile</a></li>
+  </ul>
+</nav>
+
+<form id="creAcc">
+  <h1> Edit Profile </h1>
+  <label for="firstName"> First Name: </label>
+  <input type="text" id="firstName" value="Jane"> <br/> <br/>
+  <label for="lastName"> Last Name: </label>
+  <input type="text" id="lastName" value="Doe"> <br/> <br/>
+  <label for="email"> Email Address: </label>
+  <input type="email" id="email" value="jane@example.com"> <br/> <br/> <!-- Added email address field -->
+
+  <input type="checkbox" id="changePwd"> Change Password </label>
+
+  <div id="pwdChanger" style="display: none;">
+    <label for="oldPwd"> Old Password: </label>
+    <input type="password" id="oldPwd" name="oldPassword"> <br/> <br/>
+
+    <label for="newPwd"> New Password: </label>
+    <input type="password" id="newPwd" name="newPassword"> <br/> <br/>
+
+    <input type="checkbox" id="oldPwdView">Show Old Password <br/> <br/>
+    <input type="checkbox" id="newPwdView">Show New Password <br/> <br/>
+    <h5>Must contain at least 8 characters</h5>
+  </div>
+<br/><br/>
+  <label for="phone">Phone Number: </label>
+  <input type="tel" id="phone" value="123-456-7891" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required><br><br>
+
+  <label for="shipping">Shipping Address: </label> <br/>
+
+  <label class="shipping" for="shipAddress">Address</label>
+  <input type="text" id="shipAddress" value="1234 pinetree lane" />
+
+  <label class="shipping" for="shipCountry">Country</label>
+  <input type="text" id="shipCountry" value="United States" />
+
+  <label class="shipping" for="shipZip">Zip Code</label>
+  <input type="tel" id="shipZip" value="40078" />
+
+  <label class="shipping" for="shipCity">City</label>
+  <input type="text" id="shipCity" value="Athens" />
+
+  <label class="shipping" for="shipState">State</label>
+  <input type="text" id="shipState" value="Georgia" />
+
+
+  <br/> <br/> <br>
+
+
+  <label>Card 1: </label> <br>
+
+  <ul>
+    <li><input type="radio" value="credit" name="creDeb1" id="credit1" checked>
+      <label for="credit1">credit</label></li>
+    <li><input type="radio" value="debit" name="creDeb1" id="debit1">
+      <label for="debit1">debit</label></li>
+  </ul>
+
+  <br>
+
+  <label>Card Number: </label>
+  <input type="tel" id="cardNum1" maxlength="19" value="0000 1111 2222 3333">
+
+  <label>Expiration Date: </label>
+  <input type="tel" value="01/26" id="exp1">
+
+  <br> <br>
+
+  <label>Billing Address: </label> <br/>
+
+  <label class="billing1" for="billAdd1">Address</label>
+  <input type="text" id="billAdd1" value="1234 pinetree lane">
+
+  <label class="billing1" for="billAddCtry1">Country</label>
+  <input type="text" id="billAddCtry1" value="United States">
+
+  <label class="billing1" for="billAddZip1">Zipcode</label>
+  <input type="tel" id="billAddZip1" value="40078">
+
+  <label class="billing1" for="billAddCity1">City</label>
+  <input type="text" id="billAddCity1" value="Athens">
+
+  <label class="billing1" for="billAddState1">State</label>
+  <input type="text" id="billAddState1" value="Georgia">
+
+  <br> <br> <br>
+
+  <label>Card 2: </label> <br>
+
+  <ul>
+    <li><input type="radio" value="credit" name="creDeb2" id="credit2">
+      <label for="credit2">credit</label></li>
+    <li><input type="radio" value="debit" name="creDeb2" id="debit2" checked>
+      <label for="debit2">debit</label></li>
+  </ul>
+
+  <br>
+
+  <label>Card Number: </label>
+  <input type="tel" id="cardNum2" maxlength="19" value="1111 2222 3333 4444">
+
+  <label>Expiration Date: </label>
+  <input type="tel" value="01/25" id="exp2">
+
+  <br> <br>
+
+  <label>Billing Address: </label> <br/>
+
+  <label class="billing2" for="billAdd2">Address</label>
+  <input type="text" id="billAdd2" value="7020 dishwash drive">
+
+  <label class="billing2" for="billAddCtry2">Country</label>
+  <input type="text" id="billAddCtry2" value="United States">
+
+  <label class="billing2" for="billAddZip2">Zipcode</label>
+  <input type="tel" id="billAddZip2" value="40007">
+
+  <label class="billing2" for="billAddCity2">City</label>
+  <input type="text" id="billAddCity2" value="Dallas">
+
+  <label class="billing2" for="billAddState2">State</label>
+  <input type="text" id="billAddState2" value="Texas">
+
+  <br> <br> <br>
+
+  <label>Card 3: </label> <br>
+
+  <ul>
+    <li><input type="radio" value="credit" name="creDeb3" id="credit3">
+      <label for="credit3">credit</label></li>
+    <li><input type="radio" value="debit" name="creDeb3" id="debit3">
+      <label for="debit3">debit</label></li>
+  </ul>
+
+  <br>
+
+  <label>Card Number: </label>
+  <input type="tel" id="cardNum3" maxlength="19" placeholder="1234 5678 9123 4567">
+
+  <label>Expiration Date: </label>
+  <input type="tel" placeholder="MM/YY" id="exp3">
+
+  <br> <br>
+
+  <label>Billing Address: </label> <br/>
+
+  <label class="billing3" for="billAdd3">Address</label>
+  <input type="text" id="billAdd3" placeholder="1111 nightsky lane">
+
+  <label class="billing3" for="billAddCtry3">Country</label>
+  <input type="text" id="billAddCtry3" placeholder="United States">
+
+  <label class="billing3" for="billAddZip3">Zipcode</label>
+  <input type="tel" id="billAddZip3" placeholder="30060">
+
+  <label class="billing3" for="billAddCity3">City</label>
+  <input type="text" id="billAddCity3" placeholder="Orlando">
+
+  <label class="billing3" for="billAddState3">State</label>
+  <input type="text" id="billAddState3" placeholder="Florida">
+
+  <input type="submit" id="submit" name="submit" value="Confirm Changes">
+</form>
+
+<div>
+  <br> <br>
+</div>
+
+<script src="editProfile.js"></script>
+<script>
+  document.getElementById('changePwd').addEventListener('change', function() {
+    var pwdChanger = document.getElementById('pwdChanger');
+    pwdChanger.style.display = this.checked ? 'block' : 'none';
+  });
+</script>
+</body>
+</html>
