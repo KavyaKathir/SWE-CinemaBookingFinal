@@ -39,17 +39,17 @@ $_SESSION['selected_movie_title'] = $selected_movie_title;
                 <div>
                     <h1 class="logo">MOVIELANE</h1>
                 </div>
-                <div>
-                    <button id="home" class="big-button">HOME</button>
-                </div>
+
             </div>
            
         </div>
     </div>
     <div class="screens">
-        <h2>Select your show time for coming soon movies!</h2>
+        <h2>Select your show time!!!</h2>
     </div>
-
+    <div class="screens">
+        Showroom B
+    </div>
 
     <div class="button-wrapper">
         <!-- Added data attributes to buttons for date values -->
@@ -58,9 +58,7 @@ $_SESSION['selected_movie_title'] = $selected_movie_title;
         <button class="date-button" data-date="27 April 2024 Saturday">27 Saturday</button>
         <button class="date-button" data-date="28 April 2024 Sunday">28 Sunday</button>
     </div>
-    <div class="screens">
-        Showroom B
-    </div>
+
     <div class="time-btn">
         <!-- Updated onclick attribute to point to the correct function -->
         <button class="screen-time" data-time="11:00" data-showroom="Showroom B">11:00</button>
