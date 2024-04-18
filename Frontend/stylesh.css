@@ -1,154 +1,89 @@
 body{background-color:black;}
 body {
-    font-family: 'Poppins', sans-serif;
-       background-color: black;
-       text-align:center;
-       text-color:pink;
+    font-family: 'Arial', sans-serif;
+    background-color: #545454; /* Dark background */
+    color: #e0e0e0; /* Light text color */
+    margin: 0px;
+    padding: 0px;
+    font-size: 18px;
+    text-align: center;
 }
 
 .navbar {
-    width: 100%;
-    height: 50px;
-    background-color: black;
-    margin-bottom:0px;
-    border-bottom: 10px solid white;
+    background-color: #000; /* Black background for the navbar */
+    color: #fff;
+    padding: 5px;
+    text-align: left;
 }
 
-.navbar-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 50px;
-    height: 100%;
-    color: white;
-    font-family: 'Sen', sans-serif;
-}
 .logo {
-     font-style: 30px;
-     color: #910142;
-     cursor: default;
-     transition: 1s ease;
-      margin-right: 10px;
- }
-
- .logo:hover {
-     color: #b70153;
- }
-
-.logo-container {
-    display: flex;
-    align-items: center;
-}
-.big-button {
-    font-size: 20px;
-    padding: 10px 20px;
-    margin-right:0px;
-}
-.nav-buttons {
-            display: flex;
-            justify-content: space-around;
-            padding: 10px;
-            border-radius: 5px;
-        }
-
-        .nav-buttons button {
-            padding: 5px 10px;
-            border: none;
-            background-color: red;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-.nav-buttons button{
-            margin-right: 20px;
-        }
-        .nav-buttons button:hover {
-            background-color: purple;
-        }
-.nav-buttons button:hover {
-    color: yellow;
+    color: #ff1493; /* Pink color for the MOVIELANE text */
+    font-size: 32px;
+    padding-left: 20px;
 }
 
-.button-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-top: 20px;
+.logo-link {
+    text-decoration: none; /* Removes underline from links */
+    color: inherit; /* Keeps the text color the same as its container */
 }
 
-.date-button {
-    background-color: #ccc;
-    color: blue;
-    border: none;
-    padding: 10px 20px;
+.logo-link:hover, .logo-link:focus {
+    text-decoration: none; /* Optional: Ensures no underline appears on hover/focus */
+    color: inherit; /* Optional: Keeps color consistent on hover/focus */
+}
+
+
+.screens {
+    text-align: center;
+    padding: 10px 10px;  
+    font-size: 40px;
+    color: #fff;
+}
+
+.screens:first-child {
+    padding-bottom: 10px;  
+}
+
+.screens:last-child {
+    padding-top: 10px;  
+}
+
+
+.date-button, .screen-time {
+    background-color: #ff1493; /* Darker background for buttons */
+    font-size: 30px;
+    border: 1px solid #444; /* Subtle border color */
+    color: #fff; /* White text color */
+    padding: 12px 24px;
     margin: 5px;
-    font-size:25px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s;
 }
 
-.date-button:hover {
-    background-color: #999;
+.date-button:hover, .screen-time:hover {
+    background-color: #2f86e9; /* Lighter grey for hover */
 }
 
-
-.screens{
-    margin: 5px;
-    color: #fff;
-     color: orange;
-    text-align: center;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-font-size:40px;
+.selected {
+    background-color: #007bff; /* Standard blue for selected state */
+    color: white;
 }
 
-
-
- .time-btn {
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     margin-top: 20px;
- }
-
- .screen-time {
-     background-color: white;
-     border: none;
-     color: brown;
-     padding: 10px 22px;
-     border: 1px solid var(--theme-screen-time-border);
-     text-align: center;
-     text-decoration: none;
-     font-size: 25px;
-     border-radius: 5px;
-     margin-right: 20px;
- }
-
-
-
- .screen-time:hover {
-   background-color: #df0e62;
-   color: white;
- }
-
- .flickity-viewport {
-   background-color: var(--theme-bg);
- }
 .new-button {
-    position: fixed;
-     color: green;
-    bottom: 40px;
-    right: 20px;
-    width: 150px;
-        height: 40px;
-        font-size:20px;
-
+    background-color: #007bff;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+    margin: 20px auto;
+    font-size: 20px;
 }
+
 .new-button:hover {
-   background-color: blue;
-   color: red;
- }
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
