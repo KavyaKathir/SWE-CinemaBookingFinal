@@ -9,102 +9,19 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: rgb(219, 203, 255);
+            background-color: rgb(0, 0, 0);
             text-align:center;
-            color:rgb(255, 116, 139);
+            color:rgb(255, 125, 179);
         }
-        .show-time-options {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 10px;
-        }
-        .show-time-options label {
-            font-size: 16px;
-            margin-right: 10px;
-        }
-        .show-time-options select {
-            appearance: none;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            background-color: transparent;
-            border: 3px solid #006a53;
-            border-radius: 5px;
-            padding: 5px 10px;
-            cursor: pointer;
-        }
-        .show-time-options select option {
-            background-color: rgb(163, 78, 78);
-            color: black;
-        }
-        #searchButton {
-            width: 110px;
-            height: 40px;
-            font-size: 18px;
-        }
-        #categorySelect {
-            height: 40px;
-            font-size: 15px;
-        }
-        #calendarContainer {
-            display: flex;
-            justify-content: flex-start;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .calendar-icon {
-            width: 100px;
-            height: 100px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            margin: 8px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-        .calendar-icon:hover {
-            background-color: #4572c5;
-            transform: scale(1.1);
-        }
-        .calendar-icon .top {
-            width: 60%;
-            background-color: #F75249;
-            color: white;
-            font-size: 14px;
-            padding: 5px 10px;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-            text-align: center;
-            font-weight: bold;
-        }
-        .calendar-icon .bottom {
-            height: 40%;
-            width: 60%;
-            background-color: white;
-            color: black;
-            font-size: 16px;
-            padding: 5px 10px 5px 10px;
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
-            text-align: center;
-            align-items: center;
-            line-height: 40px; /* Adjust based on the height of the calendar container */
-        }
-        .calendar-icon.selected {
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
-            background-color: #71009e;
-            color: white;
-        }
+
         .navbar {
             width: 100%;
             height: 50px;
-            background-color: black;
+            background-color: rgb(0, 0, 0);
             margin-bottom:0px;
-            border-bottom: 10px solid white;
-        }       
+            border-bottom: 10px solid rgb(0, 0, 0);
+        }    
+
         .navbar-container {
             display: flex;
             justify-content: space-between;
@@ -114,16 +31,156 @@
             color: white;
             font-family: 'Sen', sans-serif;
         }
+
         .logo {
             font-style: 30px;
-            color: #910142;
+            color: #ff86bc;
             cursor: default;
             transition: 1s ease;
         }
+
         .logo:hover {
             color: #b70153;
         }
-        
+
+        h1 {
+            font-size: 50px;
+            text-align: center;
+            color: rgb(0, 169, 135);
+        }
+
+        #searchForm {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #searchInput {
+            padding: 12px;
+            width: 50%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-right: 5px;
+            font-size: 24px;
+        }
+
+        #categorySelect {
+            background-color: #7db6b2;
+            color: white;
+            height: 40px;
+            font-size: 24px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: none;
+            margin-left: 10px;
+            margin-right: 5px;
+        }
+
+        #searchButton {
+            width: 110px;
+            height: 40px;
+            font-size: 24px;
+            background-color: #7db6b2;
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            margin-left: 10px;
+        }
+
+        #searchButton:hover {
+            background-color: #008b64;
+        }
+
+        .show-time-options {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+
+        .show-time-options label {
+            font-size: 18px;
+            margin-right: 10px;
+        }
+
+        .show-time-options select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-color: transparent;
+            border: 3px solid rgb(0, 169, 135);
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .show-time-options select option {
+            background-color: rgb(163, 78, 78);
+            color: black;
+        }
+
+        #calendarContainer {
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .calendar-icon {
+            width: 145px;
+            height: 145px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            margin: 8px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .calendar-icon:hover {
+            background-color: #4572c5;
+            transform: scale(1.1);
+        }
+
+        .calendar-icon .top {
+            width: 60%;
+            background-color: #F75249;
+            color: white;
+            font-size: 19px;
+            padding: 5px 10px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .calendar-icon .bottom {
+            height: 40%;
+            width: 60%;
+            background-color: white;
+            color: black;
+            font-size: 24px;
+            padding: 5px 10px 5px 10px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            text-align: center;
+            align-items: center;
+            line-height: 50px; 
+        }
+
+        .calendar-icon.selected {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            background-color: #38b68c;
+            color: white;
+        }
+
        .background-animation {
             position: absolute;
             width: 100%;
@@ -132,6 +189,7 @@
             background-size: 200% 200%;
             animation: gradientBG 15s ease infinite;
        }
+
        @keyframes gradientBG {
            0% {
                background-position: 0% 100%;
@@ -143,99 +201,110 @@
                background-position: 0% 50%;
            }
        }
-        h1 {
-            text-align: center;
-            color: rgb(0, 169, 135);
-        }
+
         .container {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
+
         .button-container {
             display: flex;
-            justify-content: space-between;
-            width: 100%;
-            max-width: 300px; 
-            margin-top: 10px; 
+            justify-content: center;
+            margin-top: 10px;
+            align-items: center;
         }
+
         .end-btn {
             padding: 10px 20px;
             margin-right: 10px;
-            background-color: rgb(68, 124, 255); 
+            background-color: #1c88ff;
             border: none;
             color: white;
             text-align: center;
             text-decoration: none;
             display: inline-block;
-            font-size: 16px;
+            font-size: 20px;
             cursor: pointer;
             border-radius: 5px;
+            margin-bottom: 5px;
+            margin-top: -10px;
         }
-        .end-btn.book-tickets {
-            background-color: #F75249; 
-        }
-        #searchForm {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        #searchInput {
-            padding: 10px;
-            width: 35%;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            margin-right: 10px;
-        }
+        
         #searchResults {
-            background-color: white;
+            background-color: rgb(0, 0, 0);
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
             position: relative;
             text-align: center;
             width: 80%;
             max-width: 1200px;
             margin: 0 auto;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-around;
+            overflow-x: auto;
+            padding-bottom: 20px;
         }
+
         #searchResults .movie {
+            margin-top: -30px;
             margin-bottom: 30px; 
         }
+
         #searchResults .movie img {
             width: 200px;
-            height: auto;
-            margin-right: 15px;
+            height: 300px;
         }
+
         #searchResults:empty + .end-btn {
             display: none;
         }
-            .movie {
-                display: flex;
-                align-items: center;
-                margin-bottom: 20px;
-            }
-            .movie img {
-                width: 250px;
-                height: 250px;
-                margin-right: 20px;
-            }
-            .movie-details {
-                flex: 1;
-                justify-content: center;
-            }
-            .movie-details p {
-                margin: 5px 0;
-            }
+
+        .movies-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; 
+            margin-top: 20px; 
+        }
+
+        .movie {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-direction: column;
+            max-width: 250px;
+            flex-basis:25%;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .movie img {
+            width: 100%; 
+            max-height: 350px; 
+            object-fit: cover; 
+            margin-bottom: 10px; 
+            margin: 5px 0;
+        }
+
+        .movie-details {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            flex: 1;
+            justify-content: center;
+            margin: 10px 0;
+        }
+
+        .movie-details p {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 24px;
+        }
     </style>
 </head>
 <body>
     <nav>
         <div class="navbar">
             <div class="navbar-container">
-                <div class="logo-container"><h1 class="logo">MOVIELANE </h1></div>
-                <div class="nav-buttons">
-                    <button id="loginBtn">LOGIN</button>
-                    <button id="registerBtn">REGISTER</button>
-                </div>
+                <a href="homepage.php" class="logo">MOVIELANE</a>
             </div>
         </div>
     </nav>
@@ -256,7 +325,7 @@
     </form>
     <div class="container">
         <div id="calendarContainer"></div>
-        <div id="searchResults"></div>
+        <div id="searchResults" class="movies-container"></div>
         <div id="showTimesContainer" class="show-times"></div>
     </div>
 </body>
