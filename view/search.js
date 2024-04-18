@@ -1,9 +1,9 @@
 const movies = [
-    { title: 'Anyone But You: The Valentine Encore ', showtime: '11:00 AM, 7:00 PM', director: 'Will Gluck', imageUrl: './img/new1.jpg', category: 'Comedy, Romance' },
-    { title: 'Madame Web', showtime: '11:00 AM, 7:00 PM', director: 'S.J. Clarkson', imageUrl: './img/new2.jpg', category: 'Action, Sci-Fi' },
-    { title: 'Lisa Frankenstein', showtime: '11:00 AM, 7:00 PM', director: 'Zelda Williams', imageUrl: './img/3.jpg', category: 'Comedy, Horror' },
-    { title: 'Kingdom of the Planet of the Apes', showtime: '11:00 AM, 7:00 PM', director: 'Wes Ball', imageUrl: './img/new11.jpg', category: 'Action, Sci-Fi' },
-    { title: 'A Quiet Place: Day One', showtime: '11:00 AM, 7:00 PM', director: 'Zelda Williams', imageUrl: './img/new10.jpg', category: 'Horror, Sci-Fi' }
+    { title: 'Anyone But You: The Valentine Encore ', showtime: '11:00 AM, 7:00 PM', director: 'Will Gluck', imageUrl: '/Frontend/img/new1.jpg', category: 'Comedy, Romance' },
+    { title: 'Madame Web', showtime: '11:00 AM, 7:00 PM', director: 'S.J. Clarkson', imageUrl: '/Frontend/img/new2.jpg', category: 'Action, Sci-Fi' },
+    { title: 'Lisa Frankenstein', showtime: '11:00 AM, 7:00 PM', director: 'Zelda Williams', imageUrl: '/Frontend/img/3.jpg', category: 'Comedy, Horror' },
+    { title: 'Kingdom of the Planet of the Apes', showtime: '11:00 AM, 7:00 PM', director: 'Wes Ball', imageUrl: '/Frontend/img/new11.jpg', category: 'Action, Sci-Fi' },
+    { title: 'A Quiet Place: Day One', showtime: '11:00 AM, 7:00 PM', director: 'Zelda Williams', imageUrl: '/Frontend/img/new10.jpg', category: 'Horror, Sci-Fi' }
 ];
 
 document.addEventListener('DOMContentLoaded', function () {  
@@ -161,6 +161,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const showTimeElements = document.querySelectorAll('.show-time');
         showTimeElements.forEach(element => element.style.display = 'block');
     } // showMoviesForSelectedDate
+    
 
     function showTimeOptions() {
         const showTimeOptions = document.querySelectorAll('.show-time-options');
@@ -171,14 +172,13 @@ document.addEventListener('DOMContentLoaded', function () {
         const movieElement = document.createElement('div');
         movieElement.classList.add('movie');
         movieElement.innerHTML = `
-            <img src="${movie.imageUrl}" alt="${movie.title}">
             <div class="movie-details">
-                <p><strong>Title:</strong> ${movie.title}</p>
-                <p class="show-time" style="display: none;"><strong>Show Time:</strong> ${movie.showtime}</p>
+                <img src="${movie.imageUrl}" alt="${movie.title}">
+                <p><strong></strong> ${movie.title}</p>
+                <p class="show-time" style="display: none;"><strong></strong> ${movie.showtime}</p>
             </div>
             <div class="button-container">
                 <button class="end-btn see-details" data-title="${movie.title}">See Details</button>
-                <button class="end-btn book-tickets" data-title="${movie.title}">Book Tickets</button>
             </div>
         `;
         return movieElement;
