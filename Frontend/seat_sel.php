@@ -14,41 +14,30 @@ if (isset($_SESSION['selected_movie_id']) && isset($_SESSION['selected_movie_tit
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Select ticket</title>
+    <title>Select Ticket</title>
     <style>
         body {
-          margin: 0;
-          padding: 0;
-          font-family: Arial, sans-serif;
-          overflow: hidden;
-          background: linear-gradient(45deg, #ffcc00, #ff6600, #ff3300, #ff6600, #ffcc00);
-          background-size: 400% 400%;
-          animation: gradientAnimation 10s ease infinite;
-        }
-
-        @keyframes gradientAnimation {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #FFE4E1; /* Light Pink background */
+            color: #333333; /* Dark text for contrast */
         }
 
         .navbar {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: -5px;
-            background-color: #333;
-            color: white;
+            padding: 10px 20px;
+            background-color: #000000; /* black background for navbar */
+            color: #333333;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
         }
 
-        .navbar p {
+        .navbar h1 {
             margin: 0;
+            font-size: 30px; /* Adjusted font size */
+            color: #fff; 
         }
 
         .navbar-links {
@@ -57,7 +46,7 @@ if (isset($_SESSION['selected_movie_id']) && isset($_SESSION['selected_movie_tit
 
         .navbar-links a {
             margin-right: 10px;
-            color: white;
+            color: #333333;
             text-decoration: none;
         }
 
@@ -66,32 +55,73 @@ if (isset($_SESSION['selected_movie_id']) && isset($_SESSION['selected_movie_tit
         }
 
         .ticket-form {
-          background-color: rgba(255, 255, 255, 0.8);
-          border-radius: 5px;
-          padding: 20px;
-          margin: 20px auto;
-          max-width: 400px;
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff; /* White background for form */
+            border-radius: 5px;
+            padding: 40px;
+            margin: 20px auto;
+            max-width: 400px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         .ticket-price {
-          text-align: center;
-          font-size: 16px;
-          margin-bottom: 10px;
+            text-align: center;
+            font-size: 20px;
+            margin-bottom: 10px;
         }
 
-       
-        .nav-buttons button:hover {
-            background-color: red;
+        /* Additional styles */
+        .ticket-form input[type="number"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            width: calc(100% - 22px); /* Full width minus padding and border */
+            font-size: 20px;
         }
+
+        .ticket-form .new-button {
+            padding: 5px 20px;
+            background-color: #ff1493; /* Pink color for button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%; /* Full width button */
+            box-sizing: border-box; /* Include padding in width calculation */
+            margin-top: 10px;
+        }
+
+        .ticket-form .new-button:hover {
+            background-color: #ff69b4; /* Darker pink on hover */
+        }
+
+        /* Update Seats Remaining section */
+        #remaining-seats {
+            text-align: center;
+            padding: 10px;
+            font-size: 25px;
+            color: #333333;
+            margin-top: 10px;
+        }
+
     </style>
 </head>
 <body>
 
+<!-- Content goes here -->
+
+</body>
+</html>
+
+<body>
+
 <div class="navbar">
-    <h1>MOVIELANE</h1>
-    
+    <!-- Wrap the h1 element with an anchor tag -->
+    <a href="homepage.php" style="color: white; text-decoration: none;">
+        <h1>MOVIELANE</h1>
+    </a>
 </div>
+
 
 <div id="remaining-seats">
     <p >Seats Remaining: <span id="seats-remaining"></span></p>
@@ -101,7 +131,7 @@ if (isset($_SESSION['selected_movie_id']) && isset($_SESSION['selected_movie_tit
 <div class="ticket-form">
 <?php
     // Database connection
-    $servername = "localhost";
+    $servername = "127.0.0.1";
     $username = "root";
     $password = "";
     $dbname = "home";
