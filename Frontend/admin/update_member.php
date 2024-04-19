@@ -1,5 +1,5 @@
 <?php
-$servername = "localhost";
+$servername = "127.0.0.1";
 $username = "root";
 $password = "";
 $dbname = "home";
@@ -36,13 +36,14 @@ $result = $conn->query($sql);
                    top: 0;
                    left: 0;
                    background-color: #343a40;
-                   padding-top: 70px;
+                   padding-top: 130px;
                    transition: all 0.3s;
                    z-index: 1;
+                   
                }
 
                .sidebar a {
-                   padding: 10px 20px;
+                   padding: 10px 40px;
                    text-decoration: none;
                    font-size: 18px;
                    color: #fff;
@@ -52,6 +53,8 @@ $result = $conn->query($sql);
 
                .sidebar a:hover {
                    background-color: #555;
+                    margin-left: 0px;
+                    margin-right: 0px;
                }
 
                .sidebar .active {
@@ -60,13 +63,13 @@ $result = $conn->query($sql);
 
                .sidebar .nav-item {
                    margin-bottom: 10px;
-                   margin-left:25px;
+                   margin-left:10px;
                }
 
                .sidebar .navbar-brand {
                    font-size: 24px;
                    color: #fff;
-                   padding: 20px 0;
+                   padding: 20px 20px;
                    text-align: center;
                    width: 100%;
                    display: block;
@@ -115,14 +118,33 @@ $result = $conn->query($sql);
                    margin-bottom: 5px;
                    display: block;
                    font-weight: bold;
-               }</style>
+               }
+
+
+               
+               </style>
 </head>
 <body>
+
+<nav class="sidebar">
+    <a class="navbar-brand" href="/Frontend/homepage.php">
+        <img src="/Frontend/img/lo.png" style="width:150px; height:50px;">
+        <h1 class="logo">MOVIELANE</h1>
+    </a>
+    <ul class="navbar-nav">
+        <li class="nav-item"><a href="./manageusers.php">Manage Users</a></li>
+        <li class="nav-item"><a href="./schedulemovies.html">Manage Movies</a></li>
+        <li class="nav-item"><a href="./managepromotions.php">Manage Promotions</a></li>
+        <li class="nav-item"><a href="./manageprices.php">Manage Prices</a></li>
+        <li class="nav-item"><a href="#"><i class="fa fa-user-circle-o"></i> Profile</a></li>
+        <li class="nav-item"><a href="#"><i class="fa fa-sign-out"></i> Logout</a></li>
+    </ul>
+</nav>
 
 
 <nav class="sidebar">
     <ul>
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/Frontend">
             <img src="/Frontend/img/lo.png" style="width:150px; height:50px;">
             <div class="logo-container"><h1 class="logo">MOVIELANE</h1></div>
         </a>
@@ -313,7 +335,7 @@ document.getElementById('userID').value=selectedUserId;
         });
 
         document.getElementById("suspendBtn").addEventListener("click", function() {
-    window.location.href = "manageusers.php";
+    window.location.href = "suspend_member.php";
         });
     });
 
