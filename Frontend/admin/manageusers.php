@@ -101,8 +101,82 @@
             display: block;
             font-weight: bold;
         }
+
+        body {
+            background-color: #f8f9fa;
+        }
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #343a40;
+            padding-top: 70px;
+        }
+        .sidebar a {
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: background-color 0.3s;
+        }
+        .sidebar a:hover {
+            background-color: #555;
+            color: white;
+        }
+
+        .navbar-nav {
+            margin-top: 140px; /* Increased top margin to push links down */
+        }
+
+        .sidebar .nav-item {
+            margin: 0; /* Updated to remove left margin */
+            width: 100%; /* Ensures full width */
+        }
+        .sidebar .navbar-brand {
+            font-size: 24px;
+            color: #fff;
+            padding: 20px 20px; /* Updated padding */
+            text-align: center;
+            width: 100%; /* Ensures full width */
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+        .navbar-nav.ml-auto {
+            position: absolute;
+            bottom: 0;
+            width: 100%; /* Ensures full width */
+        }
+        .btn-manage-movies, .btn-schedule-movies {
+            color: #fff;
+        }
+        .btn-manage-movies:hover, .btn-schedule-movies:hover {
+            background-color: #666;
+        }
 .userS{
 margin:50 px auto;}
+
+    </style>
+</head>
+<body>
+
+
+
+
+
+
+
     </style>
 </head>
 
@@ -110,41 +184,20 @@ margin:50 px auto;}
 
 
 <nav class="sidebar">
-    <ul>
-        <a class="navbar-brand" href="#">
-            <img src="/Frontend/img/lo.png" style="width:150px; height:50px;">
-            <div class="logo-container"><h1 class="logo">MOVIELANE</h1></div>
-        </a>
-    </ul>
-    <br/>
-    <br/>
+    <a class="navbar-brand" href="/Frontend/homepage.php">
+        <img src="/Frontend/img/lo.png" style="width:150px; height:50px;">
+        <h1 class="logo">MOVIELANE</h1>
+    </a>
     <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" href="./manageusers.php" class="active">Manage Users</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="./schedulemovies.html">Manage Movies</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="./managepromotions.php">Manage Promotions</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="./manageprices.php">Manage Prices</a>
-        </li>
-    </ul>
-    <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-            <a class="nav-link" href="#">
-                <i class="fa fa-user-circle-o"></i> Profile
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">
-                <i class="fa fa-sign-out"></i> Logout
-            </a>
-        </li>
+        <li class="nav-item"><a href="./manageusers.php">Manage Users</a></li>
+        <li class="nav-item"><a href="./schedulemovies.html">Manage Movies</a></li>
+        <li class="nav-item"><a href="./managepromotions.php">Manage Promotions</a></li>
+        <li class="nav-item"><a href="./manageprices.php">Manage Prices</a></li>
+        <li class="nav-item"><a href="#"><i class="fa fa-user-circle-o"></i> Profile</a></li>
+        <li class="nav-item"><a href="#"><i class="fa fa-sign-out"></i> Logout</a></li>
     </ul>
 </nav>
+
 
 <div class="content">
     <div class="container-fluid my-container text-center">
@@ -199,7 +252,7 @@ margin:50 px auto;}
             <?php
     if(isset($_POST['submit'])) {
         // Database configuration
-        $host = "localhost";
+        $host = "127.0.0.1";
         $dbname = "home";
         $username = "root";
         $password = "";
