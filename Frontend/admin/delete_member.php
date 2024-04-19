@@ -272,6 +272,9 @@ document.getElementById('userID').value=selectedUserId;
         });
 
         document.getElementById("suspendBtn").addEventListener("click", function() {
+    window.location.href = "suspend_member.php";
+        });
+        document.getElementById("suspendBtn").addEventListener("click", function() {
             document.getElementById("formContainer").style.display = "none";
             // Show form for suspending members
             document.getElementById("userSelect").style.display = "block";
