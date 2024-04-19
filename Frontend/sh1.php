@@ -36,10 +36,10 @@ $_SESSION['selected_movie_title'] = $selected_movie_title;
     <div class="navbar">
         <div class="navbar-container">
             <div class="logo-container">
-                <div>
+            <a href="homepage.php" class="logo-link"> <!-- Add this line -->
                     <h1 class="logo">MOVIELANE</h1>
-                </div>
-
+           
+                </a>
             </div>
            
         </div>
