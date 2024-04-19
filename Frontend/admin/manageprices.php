@@ -31,14 +31,14 @@
         .sidebar a {
             padding: 10px 20px;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 40px;
             color: #fff;
             display: block;
             transition: all 0.3s;
         }
 
         .sidebar a:hover {
-            padding-top: 8px; /* Reduce top padding on hover */
+            padding-top: 20px; /* Reduce top padding on hover */
             padding-bottom: 8px; /* Reduce bottom padding on hover */
             background-color: #555;
         }
@@ -52,7 +52,7 @@
         }
 
         .sidebar .navbar-brand {
-            font-size: 24px;
+            font-size: 40px;
             color: #fff;
             padding: 20px 0;
             text-align: center;
@@ -83,6 +83,15 @@
             margin-bottom: 25px;
         }
 
+        h2 {
+            text-align: center;
+            color: white;
+            margin-bottom:25px;
+            font-size: 39;
+
+        }
+
+
         select, input[type="text"], input[type="number"] {
             width: 100%;
             padding: 10px;
@@ -105,48 +114,95 @@
             margin: 10px;
         }
 
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #343a40;
+            padding-top: 70px;
+        }
+        .sidebar a {
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: background-color 0.3s;
+        }
+        .sidebar a:hover {
+            background-color: #555;
+            color: white;
+        }
+
+        .navbar-nav {
+            margin-top: 140px; /* Increased top margin to push links down */
+        }
+
+        .sidebar .nav-item {
+            margin: 0; /* Updated to remove left margin */
+            width: 100%; /* Ensures full width */
+        }
+        .sidebar .navbar-brand {
+            font-size: 24px;
+            color: #fff;
+            padding: 20px 20px; /* Updated padding */
+            text-align: center;
+            width: 100%; /* Ensures full width */
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+        .navbar-nav.ml-auto {
+            position: absolute;
+            bottom: 0;
+            width: 100%; /* Ensures full width */
+        }
+        .btn-manage-movies, .btn-schedule-movies {
+            color: #fff;
+            background-color: #007bff;
+        }
+        .btn-manage-movies:hover, .btn-schedule-movies:hover {
+            background-color: #3f3f3f;
+        }
+
+        .btn-secondary {
+            color: #fff;
+        }
+        .btn-secondary {
+            background-color: #8d0a0a;
+        }
+
     </style>
 </head>
-
 <body>
 
 <nav class="sidebar">
-    <ul>
-        <a class="navbar-brand" href="#">
-            <img src="/Frontend/img/lo.png" style="width:150px; height:50px;">
-            <div class="logo-container"><h1 class="logo">MOVIELANE</h1></div>
-        </a>
-    </ul>
-    <br/>
-    <br/>
-
+    <a class="navbar-brand" href="/Frontend/homepage.php">
+        <img src="/Frontend/img/lo.png" style="width:150px; height:50px;">
+        <h2 class="logo">MOVIELANE</h1>
+    </a>
     <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" href="./manageusers.php">Manage Users</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="./schedulemovies.html">Manage Movies</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="./managepromotions.php">Manage Promotions</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="./manageprices.php">Manage Prices</a>
-        </li>
-    </ul>
-    <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-            <a class="nav-link" href="#">
-                <i class="fa fa-user-circle-o"></i> Profile
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">
-                <i class="fa fa-sign-out"></i> Logout
-            </a>
-        </li>
+        <li class="nav-item"><a href="./manageusers.php">Manage Users</a></li>
+        <li class="nav-item"><a href="./schedulemovies.html">Manage Movies</a></li>
+        <li class="nav-item"><a href="./managepromotions.php">Manage Promotions</a></li>
+        <li class="nav-item"><a href="./manageprices.php">Manage Prices</a></li>
+        <li class="nav-item"><a href="#"><i class="fa fa-user-circle-o"></i> Profile</a></li>
+        <li class="nav-item"><a href="#"><i class="fa fa-sign-out"></i> Logout</a></li>
     </ul>
 </nav>
+
+
+
 <div class="container">
     <div class="bottom-content">
         <h1>Modify Prices</h1>
@@ -155,7 +211,7 @@
                 <table>
                     <?php
                     // Database connection
-                    $servername = "localhost";
+                    $servername = "127.0.0.1";
                     $username = "root";
                     $password = "";
                     $dbname = "home";
@@ -230,3 +286,4 @@
 </div>
 </body>
 </html>
+
