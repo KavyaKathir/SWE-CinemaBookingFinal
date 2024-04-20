@@ -141,7 +141,6 @@ document.addEventListener('DOMContentLoaded', function () {
         showTimeElements.forEach(element => element.style.display = 'block');
     } // showMoviesForSelectedDate
     
-
     function showTimeOptions() {
         const showTimeOptions = document.querySelectorAll('.show-time-options');
         showTimeOptions.forEach(option => option.style.display = 'block');
