@@ -1,9 +1,9 @@
 const movies = [
-    { title: 'Anyone But You: The Valentine Encore ', showtime: '4:00 PM, 7:00 PM', director: 'Will Gluck', imageUrl: '/Frontend/img/new1.jpg', category: 'Comedy, Romance' },
-    { title: 'Madame Web', showtime: '4:00 PM, 7:00 PM', director: 'S.J. Clarkson', imageUrl: '/Frontend/img/new2.jpg', category: 'Action, Sci-Fi' },
-    { title: 'Lisa Frankenstein', showtime: '4:00 PM, 7:00 PM', director: 'Zelda Williams', imageUrl: '/Frontend/img/3.jpg', category: 'Comedy, Horror' },
-    { title: 'Kingdom of the Planet of the Apes', showtime: '4:00 PM, 7:00 PM', director: 'Wes Ball', imageUrl: '/Frontend/img/new11.jpg', category: 'Action, Sci-Fi' },
-    { title: 'A Quiet Place: Day One', showtime: '4:00 PM, 7:00 PM', director: 'Zelda Williams', imageUrl: '/Frontend/img/new10.jpg', category: 'Horror, Sci-Fi' }
+    { title: 'Anyone But You: The Valentine Encore ', showtime: '4:00 PM, 7:00 PM', director: 'Will Gluck', imageUrl: 'Frontend/img/new1.jpg', category: 'Comedy, Romance' },
+    { title: 'Madame Web', showtime: '4:00 PM, 7:00 PM', director: 'S.J. Clarkson', imageUrl: 'Frontend/img/new2.jpg', category: 'Action, Sci-Fi' },
+    { title: 'Lisa Frankenstein', showtime: '4:00 PM, 7:00 PM', director: 'Zelda Williams', imageUrl: 'Frontend/img/3.jpg', category: 'Comedy, Horror' },
+    { title: 'Kingdom of the Planet of the Apes', showtime: '4:00 PM, 7:00 PM', director: 'Wes Ball', imageUrl: 'Frontend/img/new11.jpg', category: 'Action, Sci-Fi' },
+    { title: 'A Quiet Place: Day One', showtime: '4:00 PM, 7:00 PM', director: 'Zelda Williams', imageUrl: 'Frontend/img/new10.jpg', category: 'Horror, Sci-Fi' }
 ];
 
 document.addEventListener('DOMContentLoaded', function () {  
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Redirect to movie details page with the selected movie title
         window.location.href = `selectmovie.html?title=${title}`;
     } // redirectToDetails
-    
+
     function generateCalendarIcons() {
         const today = new Date(); // Get today's date
         const daysOfWeek = ['SUN', 'MON', 'TUE', 'WED', 'THUR', 'FRI', 'SAT'];
