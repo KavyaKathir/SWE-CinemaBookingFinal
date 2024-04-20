@@ -43,16 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (target.classList.contains('see-details')) {
             const movieTitle = target.dataset.title;
             redirectToDetails(movieTitle);
-        } else if (target.classList.contains('book-tickets')) {
-            const movieTitle = target.dataset.title;
-            const selectedShowDate = document.querySelector('.calendar-icon.selected .bottom');
-            if (selectedShowDate) {
-                const showDate = selectedShowDate.textContent.trim();
-                redirectToTickets(movieTitle, showDate);
-            } else {
-                redirectToTickets(movieTitle, null); // Pass null for show date if not selected
-            }
-        } // if
+        }
     });
 
     function displayMovies(movies, searchResultsContainer) {
@@ -75,18 +66,6 @@ document.addEventListener('DOMContentLoaded', function () {
         // Redirect to movie details page with the selected movie title
         window.location.href = `selectmovie.html?title=${title}`;
     } // redirectToDetails
-
-    function redirectToTickets(title) {
-        // Retrieve the show date from the hidden input field
-        const showDate = document.getElementById('selectedShowDate').value;
-        const movie = movies.find(movie => movie.title == title);
-        const imageUrl = movie ? movie.imageUrl : '';
-
-        // Redirect to showtime.html with the selected movie title and show date
-        //window.location.href = `showtime.html?title=${title}&date=${showDate}`;
-        //window.location.href = `order_summary.html?movie_title=${title}&show_date=${showDate}&image_url=${imageUrl}`;
-        window.location.href = `showtime.html?movie_title=${title}&show_date=${showDate}&image_url=${imageUrl}`;
-    } // redirectToTickets
     
     function generateCalendarIcons() {
         const today = new Date(); // Get today's date
@@ -184,9 +163,3 @@ document.addEventListener('DOMContentLoaded', function () {
         return movieElement;
     } // createMovieElement
 });
-
-// Function to handle the "Book Tickets" button click event
-function selectMovie(movieTitle) {
-    // Redirect to orderSummary.php with the selected movie title
-    window.location.href = 'orderSummary.php?movie=' + encodeURIComponent(movieTitle);
-} // selectMovie
