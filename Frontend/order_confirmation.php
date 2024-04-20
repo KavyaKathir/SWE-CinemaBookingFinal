@@ -374,7 +374,7 @@ echo "<p>Date/Time: <span id='selectedDate'></span> <span id='selectedTime'></sp
         ?>
         <div class="buttonContainer" id="button-container">
             <a href="homepage.php" id="homeBtn" class="button">Home</a>
-            <a href="order_summary.php" id="ticketBtn" class="button">View Ticket History</a>
+            <a href="bookinghis.php" id="ticketBtn" class="button">View Ticket History</a>
         </div>
     </div>
 </main>
