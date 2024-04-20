@@ -8,44 +8,46 @@
     <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Comfortaa:wght@300&family=Pacifico&display=swap&family=Nunito&display=swap" rel="stylesheet">
     <style>
         .navbar {
-    background-color: yellow;
-    color: white;
-    padding: 25px 25px;
-    height:15px;
-}
+        background-color: black;
+        color: white;
+        padding: 25px 25px;
+        height:15px;
+    }
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.navbar-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+        .logo {
+            margin: 0;
+            font-size: 30px;
+            color: red;
+        }
 
-.logo {
-    margin: 0;
-     font-size: 30px;
-     color: red;
-}
+        .nav-buttons button {
+            background-color: transparent;
+            justify-content: space-between;
+            color: blue;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 25px;
+        }
 
-.nav-buttons button {
-    background-color: transparent;
-    justify-content: space-between;
-    color: blue;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-     font-size: 25px;
-}
+        .nav-buttons button:hover {
+            background-color: orange;
+        }
 
-.nav-buttons button:hover {
-    background-color: orange;
-}
+        .logo-container {
+            font-size: 30px;
+        }
 
         body {
-            font-family: Nunito;
-            border: 1px solid black;
-            padding: 0em;
-            margin: 0em;
-            height: auto;
+            font-family: 'Poppins', sans-serif;
+            background-color: rgb(0, 0, 0);
+            text-align:center;
+            color:rgb(255, 125, 179);
         }
 
         header{
@@ -55,15 +57,15 @@
             padding: 0.5em;
         }
 
-        header h5{
+        header h3{
             text-align: center;
             color: white;
-            font-size: 100%;
+            font-size: 35px;
             font-family: Nunito;
             padding:0em;
             margin: 0em;
-        }
 
+        }
         #mainlist{
             color:black;
             margin-top: 2em;
@@ -267,29 +269,33 @@
             display: block;
         }
         .button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-}
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #1c88ff; /* Green */
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
 
-.button:hover {
-    background-color: #45a049;
-}
+        .button:hover {
+            background-color: #45a049;
+        }
 
     </style>
 </head>
 <body>
 <div class="navbar">
     <div class="navbar-container">
-        <div class="logo-container"><h1 class="logo">MOVIELANE </h1></div>
+        <div class="logo-container">
+            <a href="homepage.php" class="button">
+                MOVIELANE
+            </a>
+        </div>
         <div class="nav-buttons">
        <?php if (isset($_SESSION['user_id'])) {
             // If logged in, display the profile icon with dropdown menu
@@ -308,7 +314,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 <header>
-    <h5>CONFIRMATION PAGE</h5>
+    <h3>CONFIRMATION PAGE</h3>
 </header>
 <main>
     
@@ -366,9 +372,10 @@ echo "<p>Date/Time: <span id='selectedDate'></span> <span id='selectedTime'></sp
             echo "Error: " . $e->getMessage();
         }
         ?>
-        <a href="homepage.php" class="button">Home</a>
-<a href="order_history.php" class="button">View Ticket History</a>
-
+        <div class="buttonContainer" id="button-container">
+            <a href="homepage.php" id="homeBtn" class="button">Home</a>
+            <a href="order_summary.php" id="ticketBtn" class="button">View Ticket History</a>
+        </div>
     </div>
 </main>
 <script>
@@ -381,9 +388,5 @@ var selectedDate = sessionStorage.getItem('selectedDate');
         document.getElementById('selectedDate').innerText = selectedDate;
         document.getElementById('selectedTime').innerText = selectedTime;
     </script>
-<footer>
-    <p>&copy; 2024 Your Company</p>
-</footer>
 </body>
-
 </html>
